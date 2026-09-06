@@ -24,7 +24,7 @@ jobs:
     #- name: Installing Desktop GNOME
       #run: bash desktop.sh
 
-    - name: Installing XRDP
+    - name: Ngrok Install
       run: bash ngrok.sh
 
     - name: Holder
