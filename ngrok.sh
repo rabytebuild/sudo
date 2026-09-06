@@ -1,15 +1,16 @@
 #!/bin/bash
+set -e
 
-# Install ngrok using Snap
+# Install ngrok
 sudo snap install ngrok
 
-# Authenticate with ngrok using the provided token
-sudo ngrok config add-authtoken 3IwjZMmce2fmYCdcKyESHjYpqtT_6YHmkqJj7p8bCkssB8EzE
+# Create config directory
+mkdir -p "$HOME/.config/ngrok"
 
-# Create TCP tunnel for port 22
-#ngrok tcp 22 &
+# Add token (replace with a new token)
+ngrok config add-authtoken 3IwjZMmce2fmYCdcKyESHjYpqtT_6YHmkqJj7p8bCkssB8EzE
 
-# Create TCP tunnel for port 3389
-sudo ngrok tcp 22 &
+# Start SSH tunnel
+nohup ngrok tcp 22 > ngrok.log 2>&1 &
 
-echo "ngrok installed and tunnels created successfully."
+echo "ngrok tunnel started"
